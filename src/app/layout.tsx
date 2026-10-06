@@ -15,8 +15,7 @@ const plexSans = IBM_Plex_Sans({
 });
 
 const description =
-  "Software engineer with about seven years of experience building ERPs, payment integrations (M-Pesa, PayPal, cards) and mobile apps. Open to new roles.";
-
+  "Software engineer in Kenya with about seven years of experience building ERP systems, payment integrations (M-Pesa, PayPal) and mobile apps.";
 export const metadata: Metadata = {
   title: "James Nderitu | Software Engineer in Kenya | ERP and Mobile",
   description,
