@@ -2,17 +2,12 @@
 
 import { useEffect, useState } from "react";
 import { Mail, Phone, Download, ExternalLink, Menu, X } from "lucide-react";
-
-const EMAIL = "jamderitu@gmail.com";
-const PHONE_DISPLAY = "+254 705 171 545";
-const PHONE_TEL = "+254705171545";
-const WHATSAPP = "https://wa.me/254705171545";
-const LINKEDIN = "https://www.linkedin.com/in/james-karuri-82a4b1124/";
-const GITHUB = ""; // Add your GitHub URL here and the link appears automatically.
+import { EMAIL, PHONE_DISPLAY, PHONE_TEL, WHATSAPP, LINKEDIN, GITHUB } from "../lib/site";
 
 const NAV_LINKS = [
   { href: "#experience", label: "Experience" },
   { href: "#work", label: "Selected work" },
+  { href: "#services", label: "Services" },
   { href: "#skills", label: "Skills" },
   { href: "#about", label: "About" },
   { href: "#contact", label: "Contact" },
@@ -22,7 +17,7 @@ const SECTION_IDS = NAV_LINKS.map((l) => l.href.slice(1));
 const PROFILE = [
   { label: "Current role", value: "Software Engineer, Nusuria Technologies" },
   { label: "Experience", value: "About seven years across web, mobile and systems administration" },
-  { label: "Focus", value: "ERPs, payment integrations, mobile apps" },
+  { label: "Focus", value: "ERP systems, payment integrations, mobile apps" },
   { label: "Main tools", value: "Laravel, Node.js, Flutter, React" },
   { label: "Education", value: "Computer Science, Dedan Kimathi University of Technology" },
   { label: "Based in", value: "Kenya" },
@@ -72,30 +67,58 @@ const PROJECTS = [
     name: "Roadside Assistance App",
     period: "2026 to present",
     description:
-      "An emergency roadside assistance app connecting stranded drivers with nearby help, built across the full stack at Nusuria Technologies.",
+      "An emergency roadside assistance mobile app connecting stranded drivers with nearby help, built across the full stack at Nusuria Technologies.",
     stack: ["Flutter", "Node.js"],
-    link: { label: "Visit Nusuria", href: "https://nusuria.com/" },
+    link: { label: "Visit the Nusuria website", href: "https://nusuria.com/" },
   },
   {
     name: "Topas Agrovet ERP",
     period: "2024 to 2026",
     description:
-      "A multibranch ERP handling sales, user management and reporting, with a statistics dashboard per location so management can track branch performance.",
+      "A multibranch ERP system handling sales, user management and reporting, with a statistics dashboard per location so management can track branch performance.",
     stack: ["PHP", "Laravel", "MySQL"],
   },
   {
     name: "Payment Integration Suite",
     period: "2020 to 2021",
     description:
-      "M-Pesa, credit card and PayPal gateways integrated into multiple client web applications at Global Desarts Media.",
+      "M-Pesa, credit card and PayPal payment gateways integrated into multiple client web applications at Global Desarts Media.",
     stack: ["PHP", "CodeIgniter", "M-Pesa API", "PayPal API"],
   },
   {
-    name: "Peafowl Tours",
+    name: "Peafowl Tours Website",
     period: "Client project",
-    description: "A client website designed, built and handed off to a live business.",
+    description: "A client website designed, built and handed off to a live tours business.",
     stack: ["Web development"],
-    link: { label: "View live site", href: "https://peafowltours.com/" },
+    link: { label: "View the Peafowl Tours website", href: "https://peafowltours.com/" },
+  },
+];
+
+const SERVICES = [
+  {
+    title: "ERP and business systems",
+    description:
+      "Multibranch systems for sales, user management and reporting, with per-branch dashboards so management can see how each location is performing. Built with PHP, Laravel and MySQL.",
+  },
+  {
+    title: "Payment integrations",
+    description:
+      "M-Pesa, credit card and PayPal gateways connected to web applications, so customers can pay online and the business can reconcile what came in.",
+  },
+  {
+    title: "Mobile app development",
+    description:
+      "Cross-platform apps built with Flutter and backed by Node.js APIs, from the first screen through to a working product.",
+  },
+  {
+    title: "Websites and web applications",
+    description:
+      "Client websites and custom web apps built with Laravel, CodeIgniter, Django, React and Next.js, handed off ready for the business to run.",
+  },
+  {
+    title: "IT systems administration",
+    description:
+      "Day-to-day management of company systems and infrastructure, keeping operations running and staff supported.",
   },
 ];
 
@@ -158,7 +181,7 @@ function useActiveSection(ids: string[]) {
 
 function SectionHeading({ title, intro }: { title: string; intro?: string }) {
   return (
-    <div className="max-w-xl">
+    <div className="max-w-2xl">
       <h2 className="font-display text-2xl font-semibold tracking-tight text-ink sm:text-3xl">{title}</h2>
       {intro && <p className="mt-3 leading-relaxed text-muted">{intro}</p>}
     </div>
@@ -178,14 +201,14 @@ export default function Home() {
     <>
       <header className="sticky top-0 z-30 border-b border-line bg-paper/90 backdrop-blur">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
-          <a href="#top" className="flex items-center gap-3">
+          <a href="#top" className="flex items-center gap-3" aria-label="James Nderitu, back to top">
             <span className="flex h-8 w-8 items-center justify-center rounded-md bg-accent font-display text-sm font-semibold text-white">
               JN
             </span>
             <span className="font-display text-base font-semibold tracking-tight text-ink">James Nderitu</span>
           </a>
 
-          <nav className="hidden items-center gap-8 lg:flex" aria-label="Primary">
+          <nav className="hidden items-center gap-7 lg:flex" aria-label="Primary">
             {NAV_LINKS.map((link) => (
               <a
                 key={link.href}
@@ -251,13 +274,17 @@ export default function Home() {
         <section className="border-b border-line">
           <div className="mx-auto grid max-w-6xl gap-14 px-6 py-16 lg:grid-cols-[1.25fr_1fr] lg:items-center lg:py-24">
             <div className="reveal">
-              <h1 className="font-display text-4xl font-semibold leading-[1.08] tracking-tight text-ink sm:text-5xl lg:text-[3.5rem]">
-                I build the systems businesses run on: ERPs, payment platforms and mobile apps.
+              <h1 className="font-display text-4xl font-semibold leading-[1.08] tracking-tight text-ink sm:text-5xl lg:text-[3.25rem]">
+                Software engineer in Kenya building ERP systems, payment integrations and mobile apps.
               </h1>
               <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted">
-                I&apos;m James Nderitu, a software engineer with about seven years of experience. I currently build an
-                emergency roadside assistance app at Nusuria Technologies, and I look for roles where reliability and
-                correctness matter more than flash.
+                I&apos;m James Nderitu, a software engineer with about seven years of experience building the systems
+                businesses run on, from multibranch ERPs and M-Pesa integrations to Flutter mobile apps. I currently
+                build an emergency roadside assistance app at Nusuria Technologies.
+              </p>
+              <p className="mt-4 max-w-xl leading-relaxed text-muted">
+                I&apos;m open to full-time roles and freelance projects where reliability and correctness matter more
+                than flash.
               </p>
               <div className="mt-9 flex flex-wrap items-center gap-3">
                 <a
@@ -281,15 +308,19 @@ export default function Home() {
                   className="flex items-center gap-2 px-3 py-3 text-sm font-medium text-ink transition-colors hover:text-accent"
                 >
                   <WhatsAppIcon className="h-4 w-4" />
-                  WhatsApp
+                  Message on WhatsApp
                 </a>
               </div>
             </div>
 
-            <aside className="reveal rounded-md border border-line bg-surface" style={{ animationDelay: "120ms" }}>
+            <aside
+              className="reveal rounded-md border border-line bg-surface"
+              style={{ animationDelay: "120ms" }}
+              aria-label="Profile summary"
+            >
               <div className="flex items-center gap-2.5 border-b border-line px-6 py-4">
                 <span className="status-dot h-2 w-2 rounded-full bg-accent" aria-hidden="true" />
-                <p className="text-sm font-medium text-ink">Open to new roles</p>
+                <p className="text-sm font-medium text-ink">Open to new roles and projects</p>
               </div>
               <dl className="divide-y divide-line">
                 {PROFILE.map((item) => (
@@ -307,7 +338,7 @@ export default function Home() {
         <section id="experience" className="scroll-mt-16 border-b border-line">
           <div className="mx-auto max-w-6xl px-6 py-16 lg:py-24">
             <SectionHeading
-              title="Experience"
+              title="Software engineering experience"
               intro="Roles across software development and systems administration, newest first."
             />
             <ol className="mt-12 border-t border-line">
@@ -338,7 +369,10 @@ export default function Home() {
         {/* Selected work */}
         <section id="work" className="scroll-mt-16 border-b border-line bg-surface">
           <div className="mx-auto max-w-6xl px-6 py-16 lg:py-24">
-            <SectionHeading title="Selected work" intro="Systems and products I have designed, built and shipped." />
+            <SectionHeading
+              title="Selected ERP, payment and mobile projects"
+              intro="Systems and products I have designed, built and shipped."
+            />
             <div className="mt-12 border-t border-line">
               {PROJECTS.map((p) => (
                 <article
@@ -349,7 +383,7 @@ export default function Home() {
                   <div>
                     <h3 className="font-display text-lg font-semibold text-ink">{p.name}</h3>
                     <p className="mt-2 max-w-2xl leading-relaxed text-muted">{p.description}</p>
-                    <ul className="mt-4 flex flex-wrap gap-2" aria-label="Technologies used">
+                    <ul className="mt-4 flex flex-wrap gap-2" aria-label={`Technologies used in ${p.name}`}>
                       {p.stack.map((t) => (
                         <li key={t} className="rounded-md border border-line bg-paper px-2.5 py-1 text-xs font-medium text-ink">
                           {t}
@@ -374,20 +408,40 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Skills */}
-        <section id="skills" className="scroll-mt-16 border-b border-line">
+        {/* Services */}
+        <section id="services" className="scroll-mt-16 border-b border-line">
           <div className="mx-auto max-w-6xl px-6 py-16 lg:py-24">
-            <SectionHeading title="Skills" />
+            <SectionHeading
+              title="Software development services"
+              intro="Whether you are hiring or have a business problem that needs software, these are the areas I work in."
+            />
+            <dl className="mt-12 border-t border-line">
+              {SERVICES.map((s) => (
+                <div key={s.title} className="grid gap-2 border-b border-line py-6 md:grid-cols-[12rem_1fr] md:gap-10">
+                  <dt className="font-display text-base font-semibold text-ink">{s.title}</dt>
+                  <dd className="max-w-2xl leading-relaxed text-muted">{s.description}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        </section>
+
+        {/* Skills */}
+        <section id="skills" className="scroll-mt-16 border-b border-line bg-surface">
+          <div className="mx-auto max-w-6xl px-6 py-16 lg:py-24">
+            <SectionHeading title="Technical skills" />
             <dl className="mt-12 border-t border-line">
               {SKILLS.map((group) => (
                 <div key={group.category} className="grid gap-3 border-b border-line py-6 md:grid-cols-[12rem_1fr] md:gap-10">
                   <dt className="text-sm font-medium text-ink">{group.category}</dt>
-                  <dd className="flex flex-wrap gap-2">
-                    {group.items.map((item) => (
-                      <span key={item} className="rounded-md bg-accent-soft px-2.5 py-1 text-sm text-ink">
-                        {item}
-                      </span>
-                    ))}
+                  <dd>
+                    <ul className="flex flex-wrap gap-2">
+                      {group.items.map((item) => (
+                        <li key={item} className="rounded-md bg-accent-soft px-2.5 py-1 text-sm text-ink">
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
                   </dd>
                 </div>
               ))}
@@ -398,7 +452,9 @@ export default function Home() {
         {/* About */}
         <section id="about" className="scroll-mt-16 border-b border-line">
           <div className="mx-auto grid max-w-6xl gap-10 px-6 py-16 md:grid-cols-[12rem_1fr] lg:py-24">
-            <h2 className="font-display text-2xl font-semibold tracking-tight text-ink sm:text-3xl md:text-xl">About</h2>
+            <h2 className="font-display text-2xl font-semibold tracking-tight text-ink md:text-xl">
+              About James Nderitu
+            </h2>
             <div className="max-w-2xl space-y-4 text-lg leading-relaxed text-muted">
               <p>
                 I started as a junior developer and have grown into building complete systems on my own, including a
@@ -406,9 +462,10 @@ export default function Home() {
                 spans Django, Laravel, CodeIgniter, React.js, Node.js and Flutter.
               </p>
               <p>
-                My work leans toward software that businesses depend on every day: ERPs, payment integrations, mobile
-                apps and internal tooling. Alongside development I have taught web development, trained new hires and
-                mentored developers coming up in the field.
+                My work leans toward software that businesses depend on every day: ERP systems, payment integrations,
+                mobile apps and internal tooling. Alongside development I have taught web development, trained new
+                hires and mentored developers coming up in the field. I studied Computer Science at Dedan Kimathi
+                University of Technology and am based in Kenya.
               </p>
             </div>
           </div>
@@ -418,11 +475,11 @@ export default function Home() {
         <section id="contact" className="scroll-mt-16 px-6 py-16 lg:py-24">
           <div className="mx-auto max-w-6xl rounded-md bg-night px-8 py-12 text-white sm:px-14 sm:py-16">
             <h2 className="max-w-2xl font-display text-3xl font-semibold leading-tight tracking-tight sm:text-4xl">
-              Hiring a software developer or systems administrator?
+              Hiring a software engineer or need a system built?
             </h2>
             <p className="mt-4 max-w-xl leading-relaxed text-white/70">
-              I&apos;m open to new roles and happy to talk through what you&apos;re building. Email is the fastest way
-              to reach me.
+              I&apos;m open to full-time roles and freelance projects, and happy to talk through what you&apos;re
+              building. Email is the fastest way to reach me.
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
               <a
@@ -446,16 +503,16 @@ export default function Home() {
                 className="flex items-center gap-2 rounded-md border border-white/25 px-5 py-3 text-sm font-medium transition-colors hover:border-white"
               >
                 <WhatsAppIcon className="h-4 w-4" />
-                WhatsApp
+                Message on WhatsApp
               </a>
             </div>
             <div className="mt-8 flex gap-6 text-sm text-white/70">
               <a href={LINKEDIN} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-white">
-                LinkedIn
+                LinkedIn profile
               </a>
               {GITHUB && (
                 <a href={GITHUB} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-white">
-                  GitHub
+                  GitHub profile
                 </a>
               )}
             </div>
