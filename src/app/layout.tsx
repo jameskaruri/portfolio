@@ -18,10 +18,10 @@ const description =
   "Software engineer with about seven years of experience building ERPs, payment integrations (M-Pesa, PayPal, cards) and mobile apps. Open to new roles.";
 
 export const metadata: Metadata = {
-  title: "James Nderitu | Software Engineer",
+  title: "James Nderitu | Software Engineer in Kenya | ERP and Mobile",
   description,
   openGraph: {
-    title: "James Nderitu | Software Engineer",
+    title: "James Nderitu | Software Engineer in Kenya | ERP and Mobile",
     description,
     type: "website",
   },
