@@ -35,6 +35,7 @@ export const metadata: Metadata = {
     type: "website",
   },
   twitter: { card: "summary", title, description },
+   verification: { google:  "QI2SMXSuLueoirWeU1iqXbvKFq_2mX5rKBkhYke9gM" },
 };
 
 // Structured data so search engines understand who this site is about.
