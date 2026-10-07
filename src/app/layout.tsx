@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Bricolage_Grotesque, IBM_Plex_Sans } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { SITE_URL, NAME, EMAIL, PHONE_TEL, LINKEDIN, GITHUB } from "../lib/site";
 
@@ -35,7 +36,9 @@ export const metadata: Metadata = {
     type: "website",
   },
   twitter: { card: "summary", title, description },
-   verification: { google: "5QI2SMXSuLueoirWeU1iqXbvKFq_2mX5rKBkhYke9gM" },
+  // Paste the code from Google Search Console (the content="..." value of the HTML tag).
+  // If you already added one in your current layout.tsx, keep that exact value here.
+  verification: { google: "PASTE-YOUR-GOOGLE-CODE-HERE" },
 };
 
 // Structured data so search engines understand who this site is about.
@@ -77,6 +80,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         {children}
+        <Analytics />
       </body>
     </html>
   );
