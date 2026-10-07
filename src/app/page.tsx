@@ -37,7 +37,7 @@ const EXPERIENCE = [
     org: "Topas Agrovet",
     period: "2024 to 2026",
     description:
-      "Developed a multibranch ERP covering sales, user management, reporting and branch-level statistics, giving management visibility across every location.",
+      "Developed a multibranch ERP that replaced Excel spreadsheets across two branches, covering sales, user management, reporting, stock tracking, farmer balances and branch-level statistics.",
   },
   {
     role: "System Administrator",
@@ -51,7 +51,7 @@ const EXPERIENCE = [
     org: "Global Desarts Media",
     period: "2020 to 2021",
     description:
-      "Integrated M-Pesa, credit card and PayPal payment APIs into client software. Built new systems from scratch, modified existing ones, and trained new developers joining the team.",
+      "Integrated M-Pesa Daraja STK Push, credit card and PayPal payments into more than ten client systems, several of them live with real customers. Built new systems from scratch, modified existing ones, and trained new developers joining the team.",
   },
   {
     role: "Computer Lab Technician",
@@ -66,30 +66,45 @@ const PROJECTS = [
   {
     name: "Roadside Assistance App",
     period: "2026 to present",
-    description:
-      "An emergency roadside assistance mobile app connecting stranded drivers with nearby help, built across the full stack at Nusuria Technologies.",
+    summary: "An emergency roadside assistance product connecting stranded drivers with nearby help.",
+    problem: "Drivers stranded after a breakdown or accident need a fast way to reach help close to them.",
+    built:
+      "The whole product at Nusuria Technologies: the mobile apps, the Node.js backend, an admin panel and the project website.",
+    outcome: "Currently in development.",
     stack: ["Flutter", "Node.js"],
     link: { label: "Visit the Nusuria website", href: "https://nusuria.com/" },
   },
   {
     name: "Topas Agrovet ERP",
     period: "2024 to 2026",
-    description:
-      "A multibranch ERP system handling sales, user management and reporting, with a statistics dashboard per location so management can track branch performance.",
+    summary: "A multibranch ERP system for an agrovet business that works with farmers.",
+    problem:
+      "Both branches ran on Excel spreadsheets, which made reporting, stock counts and farmer balances slow and hard to track.",
+    built:
+      "A Laravel ERP covering sales, user management, reporting, stock tracking and farmer balances, with a statistics dashboard per branch.",
+    outcome:
+      "Management gets reports without compiling spreadsheets, stock tracking became easy, and the system knows each farmer's balance so it can be deducted from their milk payments. Still in use today.",
     stack: ["PHP", "Laravel", "MySQL"],
   },
   {
     name: "Payment Integration Suite",
     period: "2020 to 2021",
-    description:
-      "M-Pesa, credit card and PayPal payment gateways integrated into multiple client web applications at Global Desarts Media.",
-    stack: ["PHP", "CodeIgniter", "M-Pesa API", "PayPal API"],
+    summary: "Online payments added to more than ten client systems at Global Desarts Media.",
+    problem: "Client businesses needed customers to pay online instead of having payments confirmed by hand.",
+    built:
+      "M-Pesa Daraja STK Push, credit card and PayPal gateways integrated into client web applications built with PHP and CodeIgniter.",
+    outcome: "Live with real customers across more than ten client systems, and still running.",
+    stack: ["PHP", "CodeIgniter", "M-Pesa Daraja API", "PayPal API"],
   },
   {
     name: "Peafowl Tours Website",
     period: "Client project",
-    description: "A client website designed, built and handed off to a live tours business.",
-    stack: ["Web development"],
+    summary: "A website for a tours business, handed off and live.",
+    problem: "A tours business needed an online presence that travellers could find.",
+    built:
+      "Designed and built the website, handed it over to the business, and optimised it for search engines (SEO) so it can be found on Google.",
+    outcome: "Live at peafowltours.com.",
+    stack: ["Web development", "SEO"],
     link: { label: "View the Peafowl Tours website", href: "https://peafowltours.com/" },
   },
 ];
@@ -103,7 +118,7 @@ const SERVICES = [
   {
     title: "Payment integrations",
     description:
-      "M-Pesa, credit card and PayPal gateways connected to web applications, so customers can pay online and the business can reconcile what came in.",
+      "M-Pesa Daraja STK Push, credit card and PayPal gateways connected to web applications, so customers can pay online and the business can see what came in.",
   },
   {
     title: "Mobile app development",
@@ -382,7 +397,19 @@ export default function Home() {
                   <p className="text-sm tabular-nums text-muted">{p.period}</p>
                   <div>
                     <h3 className="font-display text-lg font-semibold text-ink">{p.name}</h3>
-                    <p className="mt-2 max-w-2xl leading-relaxed text-muted">{p.description}</p>
+                    <p className="mt-2 max-w-2xl leading-relaxed text-muted">{p.summary}</p>
+                    <dl className="mt-5 max-w-2xl space-y-3 text-sm">
+                      {[
+                        { label: "Problem", text: p.problem },
+                        { label: "What I built", text: p.built },
+                        { label: "Outcome", text: p.outcome },
+                      ].map((row) => (
+                        <div key={row.label} className="grid gap-1 sm:grid-cols-[6.5rem_1fr] sm:gap-4">
+                          <dt className="font-medium text-ink">{row.label}</dt>
+                          <dd className="leading-relaxed text-muted">{row.text}</dd>
+                        </div>
+                      ))}
+                    </dl>
                     <ul className="mt-4 flex flex-wrap gap-2" aria-label={`Technologies used in ${p.name}`}>
                       {p.stack.map((t) => (
                         <li key={t} className="rounded-md border border-line bg-paper px-2.5 py-1 text-xs font-medium text-ink">
