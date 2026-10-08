@@ -25,7 +25,7 @@ const PROFILE = [
 
 const EXPERIENCE = [
   {
-    role: "Software Engineer",
+    role: "Software Engineer and CTO",
     org: "Nusuria Technologies",
     period: "2026 to present",
     current: true,
