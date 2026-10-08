@@ -15,7 +15,7 @@ const NAV_LINKS = [
 const SECTION_IDS = NAV_LINKS.map((l) => l.href.slice(1));
 
 const PROFILE = [
-  { label: "Current role", value: "Software Engineer, Nusuria Technologies" },
+  { label: "Current role", value: "Software Engineer and CTO, Nusuria Technologies" },
   { label: "Experience", value: "About seven years across web, mobile and systems administration" },
   { label: "Focus", value: "ERP systems, payment integrations, mobile apps" },
   { label: "Main tools", value: "Laravel, Node.js, Flutter, React" },
