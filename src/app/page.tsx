@@ -191,13 +191,14 @@ const FAQS = [
 ];
 
 const SOCIALS = [
-  { label: "LinkedIn", href: LINKEDIN },
-  ...(GITHUB ? [{ label: "GitHub", href: GITHUB }] : []),
-  { label: "X", href: "https://x.com/jamesnderitukar" },
-  { label: "Facebook", href: "https://www.facebook.com/james.nderitu.613670" },
-  { label: "Instagram", href: "https://www.instagram.com/jamderitu/" },
-  { label: "TikTok", href: "https://www.tiktok.com/@user62736446" },
+  { label: "LinkedIn", href: LINKEDIN, icon: "linkedin" },
+  ...(GITHUB ? [{ label: "GitHub", href: GITHUB, icon: "github" }] : []),
+  { label: "X", href: "https://x.com/jamesnderitukar", icon: "x" },
+  { label: "Facebook", href: "https://www.facebook.com/james.nderitu.613670", icon: "facebook" },
+  { label: "Instagram", href: "https://www.instagram.com/jamderitu/", icon: "instagram" },
+  { label: "TikTok", href: "https://www.tiktok.com/@user62736446", icon: "tiktok" },
 ];
+
 
 function WhatsAppIcon({ className }: { className?: string }) {
   return (
@@ -205,6 +206,88 @@ function WhatsAppIcon({ className }: { className?: string }) {
       <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
       <path d="M12.001 2C6.478 2 2 6.478 2 12c0 1.868.507 3.703 1.474 5.31L2.045 22l4.827-1.396A9.943 9.943 0 0012.001 22C17.523 22 22 17.523 22 12S17.523 2 12.001 2zm0 18.062a8.03 8.03 0 01-4.101-1.124l-.294-.175-3.032.879.833-2.99-.192-.307A8.03 8.03 0 013.938 12c0-4.451 3.611-8.062 8.063-8.062 4.451 0 8.062 3.611 8.062 8.062 0 4.452-3.611 8.062-8.062 8.062z" />
     </svg>
+  );
+}
+
+function SocialIcon({ name }: { name: string }) {
+  const outline = {
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: 2,
+    strokeLinecap: "round" as const,
+    strokeLinejoin: "round" as const,
+  };
+  const svg = { viewBox: "0 0 24 24", className: "h-[18px] w-[18px]", "aria-hidden": true };
+
+  switch (name) {
+    case "linkedin":
+      return (
+        <svg {...svg} {...outline}>
+          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+          <rect x="2" y="9" width="4" height="12" />
+          <circle cx="4" cy="4" r="2" />
+        </svg>
+      );
+    case "github":
+      return (
+        <svg {...svg} {...outline}>
+          <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+        </svg>
+      );
+    case "x":
+      return (
+        <svg {...svg} fill="currentColor">
+          <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" />
+        </svg>
+      );
+    case "facebook":
+      return (
+        <svg {...svg} {...outline}>
+          <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+        </svg>
+      );
+    case "instagram":
+      return (
+        <svg {...svg} {...outline}>
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+        </svg>
+      );
+    case "tiktok":
+      return (
+        <svg {...svg} fill="currentColor">
+          <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" />
+        </svg>
+      );
+    default:
+      return null;
+  }
+}
+
+function SocialLinks({ tone = "dark" }: { tone?: "dark" | "light" }) {
+  const toneClass =
+    tone === "dark"
+      ? "border-white/20 text-white/80 hover:border-white hover:bg-white hover:text-[#0e1a24]"
+      : "border-line text-muted hover:border-accent hover:bg-accent hover:text-white";
+
+  return (
+    <ul className="flex flex-wrap items-center gap-3" aria-label="Social profiles">
+      {SOCIALS.map((s) => (
+        <li key={s.label}>
+          <a
+            href={s.href}
+            target="_blank"
+            rel="noopener noreferrer me"
+            title={s.label}
+            className={`flex h-11 w-11 items-center justify-center rounded-full border transition-all duration-200 hover:-translate-y-0.5 ${toneClass}`}
+          >
+            <SocialIcon name={s.icon} />
+            <span className="sr-only">{s.label} (opens in a new tab)</span>
+          </a>
+        </li>
+      ))}
+    </ul>
   );
 }
 
@@ -642,26 +725,18 @@ export default function Home() {
                 Message on WhatsApp
               </a>
             </div>
-            <nav className="mt-8 flex flex-wrap gap-x-6 gap-y-3 text-sm text-white/70" aria-label="Social profiles">
-              {SOCIALS.map((s) => (
-                <a
-                  key={s.label}
-                  href={s.href}
-                  target="_blank"
-                  rel="noopener noreferrer me"
-                  className="underline underline-offset-4 hover:text-white"
-                >
-                  {s.label}
-                </a>
-              ))}
-            </nav>
+            <div className="mt-10 border-t border-white/15 pt-8">
+              <p className="mb-4 text-sm text-white/60">Find me online</p>
+              <SocialLinks tone="dark" />
+            </div>
           </div>
         </section>
       </main>
 
       <footer className="border-t border-line">
-        <div className="mx-auto max-w-6xl px-6 py-8">
+        <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-5 px-6 py-8 sm:flex-row sm:items-center">
           <p className="text-sm text-muted">Copyright © {new Date().getFullYear()} James Nderitu. All rights reserved.</p>
+          <SocialLinks tone="light" />
         </div>
       </footer>
     </>
