@@ -19,6 +19,21 @@
     "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
+/* Dark mode: overrides the same tokens, so every utility adapts automatically */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-paper: #0b1118;
+    --color-surface: #121b25;
+    --color-ink: #eef2f6;
+    --color-muted: #9aa7b6;
+    --color-line: #202c39;
+    --color-accent: #34d399;
+    --color-accent-strong: #6ee7b7;
+    --color-accent-soft: #10302a;
+    --color-night: #060a0f;
+  }
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -28,6 +43,12 @@ body {
   color: var(--color-ink);
   font-family: var(--font-plex-sans), -apple-system, BlinkMacSystemFont,
     "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: #fff;
 }
 
 /* Visible keyboard focus */
@@ -36,6 +57,14 @@ button:focus-visible {
   outline: 2px solid var(--color-accent);
   outline-offset: 3px;
   border-radius: 4px;
+}
+
+/* Dotted grid that fades out, for behind the hero */
+.bg-grid {
+  background-image: radial-gradient(var(--color-line) 1px, transparent 1px);
+  background-size: 24px 24px;
+  -webkit-mask-image: radial-gradient(ellipse at top, black 30%, transparent 75%);
+  mask-image: radial-gradient(ellipse at top, black 30%, transparent 75%);
 }
 
 /* The one page-load moment: the hero rises into place */

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Bricolage_Grotesque, IBM_Plex_Sans } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
@@ -20,6 +20,13 @@ const title = "James Nderitu | Software Engineer in Kenya | ERP and Mobile";
 const description =
   "Software engineer in Kenya with about seven years of experience building ERP systems, payment integrations (M-Pesa, PayPal) and mobile apps.";
 
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f6f7f8" },
+    { media: "(prefers-color-scheme: dark)", color: "#0b1118" },
+  ],
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title,
@@ -34,11 +41,11 @@ export const metadata: Metadata = {
     siteName: `${NAME} | Software Engineer`,
     locale: "en_KE",
     type: "website",
+    // Add a 1200x630 image at public/og.png for link previews.
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: `${NAME}, software engineer` }],
   },
-  twitter: { card: "summary", title, description },
-  // Paste the code from Google Search Console (the content="..." value of the HTML tag).
-  // If you already added one in your current layout.tsx, keep that exact value here.
-  verification: { google:  "j2UGwKsOQrQROnF8T9vlyhmycxHbr_KHjwSIvgETpBc" },
+  twitter: { card: "summary_large_image", title, description, images: ["/og.png"] },
+  verification: { google: "j2UGwKsOQrQROnF8T9vlyhmycxHbr_KHjwSIvgETpBc" },
 };
 
 // Structured data so search engines understand who this site is about.

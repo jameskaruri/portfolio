@@ -23,6 +23,12 @@ const PROFILE = [
   { label: "Based in", value: "Kenya" },
 ];
 
+const STATS = [
+  { n: "7+", l: "Years building" },
+  { n: "10+", l: "Payment integrations" },
+  { n: "10", l: "ERP branches live" },
+];
+
 const EXPERIENCE = [
   {
     role: "Software Engineer and CTO",
@@ -240,7 +246,7 @@ export default function Home() {
             <a
               href="/resume.pdf"
               download
-              className="hidden items-center gap-2 rounded-md bg-ink px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-accent sm:flex"
+              className="hidden items-center gap-2 rounded-md bg-accent px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-accent-strong sm:flex"
             >
               <Download className="h-4 w-4" aria-hidden="true" />
               Resume
@@ -286,7 +292,12 @@ export default function Home() {
 
       <main id="top">
         {/* Hero */}
-        <section className="border-b border-line">
+        <section className="relative overflow-hidden border-b border-line">
+          <div className="bg-grid absolute inset-0 -z-10" aria-hidden="true" />
+          <div
+            className="absolute -top-32 left-1/2 -z-10 h-72 w-[40rem] -translate-x-1/2 rounded-full bg-accent/15 blur-3xl"
+            aria-hidden="true"
+          />
           <div className="mx-auto grid max-w-6xl gap-14 px-6 py-16 lg:grid-cols-[1.25fr_1fr] lg:items-center lg:py-24">
             <div className="reveal">
               <h1 className="font-display text-4xl font-semibold leading-[1.08] tracking-tight text-ink sm:text-5xl lg:text-[3.25rem]">
@@ -326,6 +337,15 @@ export default function Home() {
                   Message on WhatsApp
                 </a>
               </div>
+
+              <dl className="mt-12 grid max-w-md grid-cols-3 gap-6 border-t border-line pt-8">
+                {STATS.map((s) => (
+                  <div key={s.l}>
+                    <dt className="font-display text-3xl font-semibold text-ink">{s.n}</dt>
+                    <dd className="mt-1 text-xs text-muted">{s.l}</dd>
+                  </div>
+                ))}
+              </dl>
             </div>
 
             <aside
@@ -365,7 +385,7 @@ export default function Home() {
                   <p className="text-sm tabular-nums text-muted">
                     {job.period}
                     {job.current && (
-                      <span className="ml-2 rounded-md bg-accent-soft px-2 py-0.5 text-xs font-medium text-accent">
+                      <span className="ml-2 rounded-full bg-accent-soft px-2.5 py-0.5 text-xs font-medium text-accent">
                         Current
                       </span>
                     )}
@@ -412,7 +432,10 @@ export default function Home() {
                     </dl>
                     <ul className="mt-4 flex flex-wrap gap-2" aria-label={`Technologies used in ${p.name}`}>
                       {p.stack.map((t) => (
-                        <li key={t} className="rounded-md border border-line bg-paper px-2.5 py-1 text-xs font-medium text-ink">
+                        <li
+                          key={t}
+                          className="rounded-full border border-line bg-paper px-3 py-1 text-xs font-medium text-ink"
+                        >
                           {t}
                         </li>
                       ))}
@@ -464,7 +487,7 @@ export default function Home() {
                   <dd>
                     <ul className="flex flex-wrap gap-2">
                       {group.items.map((item) => (
-                        <li key={item} className="rounded-md bg-accent-soft px-2.5 py-1 text-sm text-ink">
+                        <li key={item} className="rounded-full bg-accent-soft px-3 py-1 text-sm text-ink">
                           {item}
                         </li>
                       ))}
@@ -511,7 +534,7 @@ export default function Home() {
             <div className="mt-9 flex flex-wrap gap-3">
               <a
                 href={`mailto:${EMAIL}`}
-                className="flex items-center gap-2 rounded-md bg-white px-5 py-3 text-sm font-medium text-night transition-opacity hover:opacity-90"
+                className="flex items-center gap-2 rounded-md bg-white px-5 py-3 text-sm font-medium text-[#0e1a24] transition-opacity hover:opacity-90"
               >
                 <Mail className="h-4 w-4" aria-hidden="true" />
                 {EMAIL}
