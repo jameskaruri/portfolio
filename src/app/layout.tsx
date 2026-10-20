@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   twitter: { card: "summary", title, description },
   // Paste the code from Google Search Console (the content="..." value of the HTML tag).
   // If you already added one in your current layout.tsx, keep that exact value here.
-  verification: { google: "PASTE-YOUR-GOOGLE-CODE-HERE" },
+  verification: { google:  "j2UGwKsOQrQROnF8T9vlyhmycxHbr_KHjwSIvgETpBc" },
 };
 
 // Structured data so search engines understand who this site is about.
