@@ -27,7 +27,7 @@ const PROFILE = [
 const STATS = [
   { n: "7+", l: "Years building" },
   { n: "10+", l: "Payment integrations" },
-  { n: "2", l: "ERP branches live" },
+  { n: "10", l: "ERP branches live" },
 ];
 
 const EXPERIENCE = [
