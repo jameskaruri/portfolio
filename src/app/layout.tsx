@@ -16,6 +16,8 @@ const plexSans = IBM_Plex_Sans({
   weight: ["400", "500", "600"],
 });
 
+const GA_ID = "G-ZX31NC64LC";
+
 const title = "James Nderitu | Software Engineer in Kenya | ERP and Mobile";
 const description =
   "Software engineer in Kenya with about seven years of experience building ERP systems, payment integrations (M-Pesa, PayPal) and mobile apps.";
@@ -89,6 +91,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${bricolage.variable} ${plexSans.variable}`}>
+      <head>
+        {/* Google tag (gtag.js) */}
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '${GA_ID}');`,
+          }}
+        />
+      </head>
       <body className="antialiased" suppressHydrationWarning>
         <script
           type="application/ld+json"
