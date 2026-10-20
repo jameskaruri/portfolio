@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { Mail, Phone, Download, ExternalLink, Menu, X } from "lucide-react";
 import { EMAIL, PHONE_DISPLAY, PHONE_TEL, WHATSAPP, LINKEDIN, GITHUB } from "../lib/site";
 
@@ -26,7 +27,7 @@ const PROFILE = [
 const STATS = [
   { n: "7+", l: "Years building" },
   { n: "10+", l: "Payment integrations" },
-  { n: "10", l: "ERP branches live" },
+  { n: "2", l: "ERP branches live" },
 ];
 
 const EXPERIENCE = [
@@ -223,9 +224,13 @@ export default function Home() {
       <header className="sticky top-0 z-30 border-b border-line bg-paper/90 backdrop-blur">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
           <a href="#top" className="flex items-center gap-3" aria-label="James Nderitu, back to top">
-            <span className="flex h-8 w-8 items-center justify-center rounded-md bg-accent font-display text-sm font-semibold text-white">
-              JN
-            </span>
+            <Image
+              src="/james-nderitu.jpg"
+              alt=""
+              width={36}
+              height={36}
+              className="h-9 w-9 rounded-full border border-line object-cover object-top"
+            />
             <span className="font-display text-base font-semibold tracking-tight text-ink">James Nderitu</span>
           </a>
 
@@ -353,9 +358,22 @@ export default function Home() {
               style={{ animationDelay: "120ms" }}
               aria-label="Profile summary"
             >
-              <div className="flex items-center gap-2.5 border-b border-line px-6 py-4">
-                <span className="status-dot h-2 w-2 rounded-full bg-accent" aria-hidden="true" />
-                <p className="text-sm font-medium text-ink">Open to new roles and projects</p>
+              <div className="flex items-center gap-4 border-b border-line px-6 py-5">
+                <Image
+                  src="/james-nderitu.jpg"
+                  alt="James Nderitu"
+                  width={72}
+                  height={72}
+                  priority
+                  className="h-[72px] w-[72px] rounded-full border border-line object-cover object-top"
+                />
+                <div>
+                  <p className="font-display text-lg font-semibold text-ink">James Nderitu</p>
+                  <p className="mt-1 flex items-center gap-2 text-sm text-muted">
+                    <span className="status-dot h-2 w-2 rounded-full bg-accent" aria-hidden="true" />
+                    Open to new roles and projects
+                  </p>
+                </div>
               </div>
               <dl className="divide-y divide-line">
                 {PROFILE.map((item) => (
@@ -502,9 +520,18 @@ export default function Home() {
         {/* About */}
         <section id="about" className="scroll-mt-16 border-b border-line">
           <div className="mx-auto grid max-w-6xl gap-10 px-6 py-16 md:grid-cols-[12rem_1fr] lg:py-24">
-            <h2 className="font-display text-2xl font-semibold tracking-tight text-ink md:text-xl">
-              About James Nderitu
-            </h2>
+            <div>
+              <h2 className="font-display text-2xl font-semibold tracking-tight text-ink md:text-xl">
+                About James Nderitu
+              </h2>
+              <Image
+                src="/james-nderitu.jpg"
+                alt="Portrait of James Nderitu"
+                width={192}
+                height={240}
+                className="mt-6 h-60 w-48 rounded-md object-cover object-top"
+              />
+            </div>
             <div className="max-w-2xl space-y-4 text-lg leading-relaxed text-muted">
               <p>
                 I started as a junior developer and have grown into building complete systems on my own, including a
