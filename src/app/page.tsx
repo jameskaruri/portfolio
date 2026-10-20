@@ -163,6 +163,42 @@ const SKILLS = [
   },
 ];
 
+const FAQS = [
+  {
+    q: "What does James Nderitu build?",
+    a: "ERP and business systems, payment integrations, Flutter mobile apps, and websites and web applications. His main tools are Laravel, Node.js, Flutter and React.",
+  },
+  {
+    q: "Is James available for freelance or full-time work?",
+    a: "Yes. He is open to both full-time roles and freelance projects. Email is the fastest way to reach him.",
+  },
+  {
+    q: "Which payment gateways has he integrated?",
+    a: "M-Pesa Daraja STK Push, credit card gateways and PayPal, added to more than ten client systems, several of them live with real customers.",
+  },
+  {
+    q: "What technologies does he work with?",
+    a: "PHP, JavaScript, Python, SQL, MySQL and PostgreSQL, with Laravel, CodeIgniter, Django, React.js, Next.js, Node.js and Flutter, plus REST APIs, GraphQL and SMS APIs.",
+  },
+  {
+    q: "How much experience does he have?",
+    a: "About seven years across web development, mobile development and systems administration, including a multibranch ERP and an emergency roadside assistance app.",
+  },
+  {
+    q: "Where is James based?",
+    a: "Kenya. He studied Computer Science at Dedan Kimathi University of Technology.",
+  },
+];
+
+const SOCIALS = [
+  { label: "LinkedIn", href: LINKEDIN },
+  ...(GITHUB ? [{ label: "GitHub", href: GITHUB }] : []),
+  { label: "X", href: "https://x.com/jamesnderitukar" },
+  { label: "Facebook", href: "https://www.facebook.com/james.nderitu.613670" },
+  { label: "Instagram", href: "https://www.instagram.com/jamderitu/" },
+  { label: "TikTok", href: "https://www.tiktok.com/@user62736446" },
+];
+
 function WhatsAppIcon({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
@@ -226,7 +262,7 @@ export default function Home() {
           <a href="#top" className="flex items-center gap-3" aria-label="James Nderitu, back to top">
             <Image
               src="/james-nderitu.jpg"
-              alt=""
+              alt="James Nderitu"
               width={36}
               height={36}
               className="h-9 w-9 rounded-full border border-line object-cover object-top"
@@ -548,6 +584,29 @@ export default function Home() {
           </div>
         </section>
 
+        {/* FAQ */}
+        <section id="faq" className="scroll-mt-16 border-b border-line bg-surface">
+          <div className="mx-auto max-w-6xl px-6 py-16 lg:py-24">
+            <SectionHeading title="Frequently asked questions" />
+            <div className="mt-12 max-w-3xl border-t border-line">
+              {FAQS.map((item) => (
+                <details key={item.q} className="group border-b border-line py-5">
+                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-display text-base font-semibold text-ink [&::-webkit-details-marker]:hidden">
+                    {item.q}
+                    <span
+                      className="text-xl leading-none text-accent transition-transform group-open:rotate-45"
+                      aria-hidden="true"
+                    >
+                      +
+                    </span>
+                  </summary>
+                  <p className="mt-3 leading-relaxed text-muted">{item.a}</p>
+                </details>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Contact */}
         <section id="contact" className="scroll-mt-16 px-6 py-16 lg:py-24">
           <div className="mx-auto max-w-6xl rounded-md bg-night px-8 py-12 text-white sm:px-14 sm:py-16">
@@ -583,16 +642,19 @@ export default function Home() {
                 Message on WhatsApp
               </a>
             </div>
-            <div className="mt-8 flex gap-6 text-sm text-white/70">
-              <a href={LINKEDIN} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-white">
-                LinkedIn profile
-              </a>
-              {GITHUB && (
-                <a href={GITHUB} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-white">
-                  GitHub profile
+            <nav className="mt-8 flex flex-wrap gap-x-6 gap-y-3 text-sm text-white/70" aria-label="Social profiles">
+              {SOCIALS.map((s) => (
+                <a
+                  key={s.label}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer me"
+                  className="underline underline-offset-4 hover:text-white"
+                >
+                  {s.label}
                 </a>
-              )}
-            </div>
+              ))}
+            </nav>
           </div>
         </section>
       </main>
