@@ -72,7 +72,14 @@ const jsonLd = {
     "Next.js",
     "Systems administration",
   ],
-  sameAs: [LINKEDIN, ...(GITHUB ? [GITHUB] : [])],
+  sameAs: [
+    LINKEDIN,
+    ...(GITHUB ? [GITHUB] : []),
+    "https://x.com/jamesnderitukar",
+    "https://www.facebook.com/james.nderitu.613670",
+    "https://www.instagram.com/jamderitu/",
+    "https://www.tiktok.com/@user62736446",
+  ],
 };
 
 export default function RootLayout({
