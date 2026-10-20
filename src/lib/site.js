@@ -1,6 +1,6 @@
 // IMPORTANT: replace SITE_URL with your real address (your Vercel link or custom domain),
 // with no trailing slash. It is used for the canonical link, sitemap and social previews.
-export const SITE_URL = "https://portfolio-indol-eight-b7tpdc715g.vercel.app/";
+export const SITE_URL = "https://www.jamesnderitu.co.ke/";
 
 export const NAME = "James Nderitu";
 export const EMAIL = "jamderitu@gmail.com";
