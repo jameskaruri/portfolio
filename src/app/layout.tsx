@@ -53,7 +53,8 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: NAME,
-  jobTitle: "Software Engineer",
+  jobTitle: "Software Engineer and CTO",
+  image: `${SITE_URL}/james-nderitu.jpg`,
   url: SITE_URL,
   email: EMAIL,
   telephone: PHONE_TEL,
@@ -81,7 +82,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${bricolage.variable} ${plexSans.variable}`}>
-      <body className="antialiased">
+      <body className="antialiased" suppressHydrationWarning>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
